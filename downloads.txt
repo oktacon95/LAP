@@ -1,0 +1,10 @@
+Notepad++
+https://notepad-plus-plus.org/
+https://notepad-plus-plus.org/repository/7.x/7.6.3/npp.7.6.3.Installer.x64.exe
+
+MySQL-Manager (Workbench + Server)
+https://dev.mysql.com/downloads/windows/installer/8.0.html
+https://dev.mysql.com/downloads/file/?id=484919
+
+XAMPP
+https://www.apachefriends.org/xampp-files/7.3.1/xampp-win32-7.3.1-0-VC15-installer.exe

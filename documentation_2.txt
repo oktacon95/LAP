@@ -1,0 +1,5 @@
+1.	Softwareinstallation:
+MySQL Server: https://dev.mysql.com/downloads/file/?id=484919
+Installiere MySQL Workbench + MySQL-Server
+Liefern kompatible Versionen. XAMPP liefert MariaDB womit MySQL Workbench nicht richtig kompatibel ist.
+Installiere XAMPP und verwende dort Apache.
