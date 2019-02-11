@@ -1,0 +1,70 @@
+CREATE SCHEMA bibliothek;
+USE bibliothek;
+
+# deletes structure and data of a table
+DROP TABLE IF EXISTS Buecher;
+DROP TABLE IF EXISTS Verlag;
+DROP TABLE IF EXISTS Autor;
+
+# deletes data of table
+TRUNCATE Buecher;
+
+# create a table
+CREATE TABLE Verlag (
+	idVerlag INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(30) NOT NULL, 
+    URL VARCHAR(100)
+);
+
+# create a table with foreign key
+CREATE TABLE Buecher (
+	ISBN CHAR(17) NOT NULL PRIMARY KEY, 
+	Titel VARCHAR(60) NOT NULL, 
+	Kurzbeschreibung TEXT, 
+	Erscheinungsjahr YEAR NOT NULL, 
+	Auflage INT NOT NULL, 
+	Kategorie VARCHAR(30) NOT NULL,
+    idAutor INT NOT NULL,
+    FOREIGN KEY idAutor(idAutor)
+    REFERENCES Autor(idAutor),
+    idVerlag INT NOT NULL,
+    FOREIGN KEY idVerlag(idVerlag)
+    REFERENCES Verlag(idVerlag)
+); 
+
+# get information about a table
+DESCRIBE Verlag;
+
+# insert data to a table
+INSERT INTO `tankstelle`.`verbrauch`
+(`Buchungs_ID`,
+`Kunde_ID`,
+`Buchungsdatum`,
+`Treibstoff_ID`,
+`Menge`,
+`Preis`)
+VALUES
+(47612,
+62123,
+str_to_date('03.08.2018', '%d.%m.%Y'),
+1,
+40.50,
+55.22);
+
+# delete one entry of a table
+DELETE FROM Buecher
+WHERE rowIndex = 1;
+
+# Change datatype of the column "URL" to "VARCHAR(100)"
+ALTER TABLE Verlag MODIFY URL VARCHAR(100);
+
+# Change value of field 
+UPDATE Autor
+SET Herkunftsland = "Californien"
+WHERE idAutor = 1;
+
+# left join
+SELECT Verbrauch.Kunde_ID, Kunde.Vorname, Kunde.Nachname, Kunde.Strasse, Kunde.PLZ, Kunde.Ort, Kunde.Geburtsdatum, SUM(Verbrauch.Menge) as Treibstoffverbrauch, SUM(Verbrauch.Preis) as Gesamtpreis FROM Verbrauch
+LEFT JOIN Kunde ON Verbrauch.Kunde_ID = Kunde.Kunde_ID
+WHERE Verbrauch.Kunde_ID = "sad";
+
